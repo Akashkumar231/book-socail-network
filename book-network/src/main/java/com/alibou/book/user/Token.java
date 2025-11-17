@@ -24,7 +24,7 @@ public class Token {
     private LocalDateTime validatedAt;
 
     @ManyToOne
-    @Column(name = "userId",nullable = false)
+    @JoinColumn(name = "userId",nullable = false)
     private User user;
 
 
