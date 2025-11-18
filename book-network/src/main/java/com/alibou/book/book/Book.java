@@ -32,21 +32,7 @@ public class Book {
 
     private boolean sharable;
 
-    @CreatedDate
-    @Column(nullable = false, updatable = false)
-    private LocalDateTime createdDate;
 
-    @LastModifiedDate
-    @Column(insertable = false)
-    private LocalDateTime lastModifiedDate;
-
-    @CreatedBy
-    @Column(nullable = false,updatable = false)
-    private Integer createdBy;
-
-    @LastModifiedBy
-    @Column(insertable = false)
-    private Integer lastModifiedBy;
 
 
 }
