@@ -16,16 +16,16 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
+@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
 @MappedSuperclass
-@SuperBuilder
 @EntityListeners(AuditingEntityListener.class)
 public class BaseEntity {
 
     @Id
     @GeneratedValue
-    private Integer Id;
+    private Integer id;
 
     @CreatedDate
     @Column(nullable = false, updatable = false)
