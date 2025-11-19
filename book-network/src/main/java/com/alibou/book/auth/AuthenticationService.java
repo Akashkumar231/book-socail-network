@@ -9,7 +9,6 @@ import com.alibou.book.user.TokenRepository;
 import com.alibou.book.user.User;
 import com.alibou.book.user.UserRepository;
 import jakarta.mail.MessagingException;
-import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
