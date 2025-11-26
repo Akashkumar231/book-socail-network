@@ -1,5 +1,6 @@
 package com.alibou.book.book;
 
+import com.alibou.book.history.BookTransactionHistory;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -28,5 +29,17 @@ public class BookMapper {
                .owner(book.getOwner().fullName())
                .build();
 
+    }
+
+    public BorrowedBookResponse toBorrowedBookResponse(BookTransactionHistory bookTransactionHistory) {
+        return BorrowedBookResponse.builder()
+                .id(bookTransactionHistory.getBook().getId())
+                .title(bookTransactionHistory.getBook().getTitle())
+                .authorName(bookTransactionHistory.getBook().getAuthorName())
+                .isbn(bookTransactionHistory.getBook().getIsbn())
+                .rate(bookTransactionHistory.getBook().getRate())
+                .returned(bookTransactionHistory.getBook().isArchived())
+                .returnedApproved(bookTransactionHistory.getBook().isSharable())
+                .build();
     }
 }
