@@ -1,7 +1,9 @@
 package com.alibou.book.book;
 
 import com.alibou.book.common.PageResponse;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.mail.Multipart;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.query.Page;
@@ -85,6 +87,31 @@ public class BookController {
         return ResponseEntity.ok(service.borrowBook(bookId,connectedUser));
     }
 
+    @PostMapping("/borrow/return/{book-id}")
+    public ResponseEntity<Integer> returnBorrowBook(
+            @PathVariable("book-id") Integer bookId,
+            Authentication connectedUser
+    )
+    {
+        return ResponseEntity.ok(service.returnBorrowBook(bookId,connectedUser));
+    }
 
+    @PostMapping("/borrow/return/approve/{book-id}")
+    public ResponseEntity<Integer> approveReturnBorrowBook(
+            @PathVariable("book-id") Integer bookId,
+            Authentication connectedUser
+    ){
+        return ResponseEntity.ok(service.approveReturnBorrowBook(bookId,connectedUser));
+    }
 
+    @PostMapping(value = "/cover/{book-id}",consumes = "multipart/form-data")
+    public ResponseEntity<?> uploadBookCoverPicture(
+            @PathVariable("book-id") Integer bookId,
+            @Parameter()
+            @RequestPart("file")Multipart file,
+            Authentication connectedUser
+            ){
+        service.uploadBookCoverPicture(file,connectedUser,bookId);
+        return ResponseEntity.accepted().build();
+    }
 }
