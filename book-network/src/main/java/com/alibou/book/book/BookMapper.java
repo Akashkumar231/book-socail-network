@@ -1,5 +1,6 @@
 package com.alibou.book.book;
 
+import com.alibou.book.file.FileUtils;
 import com.alibou.book.history.BookTransactionHistory;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,7 @@ public class BookMapper {
                .archived(book.isArchived())
                .shareable(book.isSharable())
                .owner(book.getOwner().fullName())
+               .cover(FileUtils.readFileFromLocation(book.getBookCover()))
                .build();
 
     }

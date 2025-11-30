@@ -15,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Objects;
@@ -231,11 +232,11 @@ public class BookService {
         return bookTransactionHistoryRepository.save(bookTransactionHistory).getId();
     }
 
-    public void uploadBookCoverPicture(Multipart file, Authentication connectedUser, Integer bookId) {
+    public void uploadBookCoverPicture(MultipartFile file, Authentication connectedUser, Integer bookId) {
         Book book = bookRepository.findById(bookId)
                 .orElseThrow(()->new EntityNotFoundException("No book found with ID:: " + bookId));
         User user = ((User) connectedUser.getPrincipal());
-        var bookCover = fileStorageService.saveFile(file,book,user.getId());
+        var bookCover = fileStorageService.saveFile(file,user.getId());
         book.setBookCover(bookCover);
         bookRepository.save(book);
     }
