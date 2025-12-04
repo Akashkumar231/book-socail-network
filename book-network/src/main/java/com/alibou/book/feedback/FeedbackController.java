@@ -2,7 +2,6 @@ package com.alibou.book.feedback;
 
 import com.alibou.book.common.PageResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
