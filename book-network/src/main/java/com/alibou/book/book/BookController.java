@@ -5,17 +5,23 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.mail.Multipart;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.query.Page;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("books")
 @RequiredArgsConstructor
+@AllArgsConstructor
 @Tag(name="Book")
 public class BookController {
+
 
     private final BookService service;
 
@@ -108,7 +114,7 @@ public class BookController {
     public ResponseEntity<?> uploadBookCoverPicture(
             @PathVariable("book-id") Integer bookId,
             @Parameter()
-            @RequestPart("file")Multipart file,
+            @RequestPart("file") MultipartFile file,
             Authentication connectedUser
             ){
         service.uploadBookCoverPicture(file,connectedUser,bookId);

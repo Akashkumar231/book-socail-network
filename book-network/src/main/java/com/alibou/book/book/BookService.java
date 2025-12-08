@@ -8,7 +8,9 @@ import com.alibou.book.history.BookTransactionHistoryRepository;
 import com.alibou.book.user.User;
 import jakarta.mail.Multipart;
 import jakarta.persistence.EntityNotFoundException;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -23,6 +25,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@AllArgsConstructor
 public class BookService {
     private final BookRepository bookRepository;
     private final BookMapper bookMapper;

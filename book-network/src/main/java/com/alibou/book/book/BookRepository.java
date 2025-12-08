@@ -11,9 +11,9 @@ public interface BookRepository extends JpaRepository<Book,Integer>, JpaSpecific
 
     @Query("""
             SELECT book
-            FROM Book book 
+            FROM Book book
             WHERE book.archived=false
-            AND book.shareable = true
+            AND book.sharable = true
             AND book.owner.id != :userId
             """)
     Page<Book> findAllDisplayableBooks(Pageable pageable, Integer userId);
