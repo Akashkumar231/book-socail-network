@@ -17,7 +17,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("books")
-@RequiredArgsConstructor
 @AllArgsConstructor
 @Tag(name="Book")
 public class BookController {

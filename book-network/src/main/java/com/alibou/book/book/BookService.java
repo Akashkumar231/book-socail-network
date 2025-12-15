@@ -9,6 +9,7 @@ import com.alibou.book.user.User;
 import jakarta.mail.Multipart;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -24,7 +25,6 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
 @AllArgsConstructor
 public class BookService {
     private final BookRepository bookRepository;
